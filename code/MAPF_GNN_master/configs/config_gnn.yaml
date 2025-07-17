@@ -1,0 +1,42 @@
+exp_name: 'trained_models/gnn_k3'
+
+# CNN
+channels: [16, 16, 16]
+strides: [1,1,1,1,1]
+
+# Encoder MLP
+encoder_layers: 1
+last_convs: [400]
+encoder_dims: [64]
+
+# GNN
+graph_filters: [3]
+node_dims: [128]
+
+# Policy MLP
+action_layers: 1
+
+# Training
+epochs: 5
+tests_episodes: 100
+net_type: 'gnn'
+msg_type: 'gcn'
+# Simulation
+board_size: [10,10]
+map_shape: [10,10]
+num_agents: 2
+obstacles: 10
+max_steps: 40
+max_time: 32
+sensing_range: 6
+
+# Data Loading
+min_time: 1
+num_workers: 3
+batch_size: 1
+train:
+    root_dir: 'dataset/5_8_28'
+    mode: 'train'
+    min_time: 5
+    max_time_dl: 25
+    nb_agents: 5

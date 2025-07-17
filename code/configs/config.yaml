@@ -1,0 +1,69 @@
+model_name: 'transNAR'
+
+llm_type: "gpt"
+
+
+# CNN
+channels: [16, 16, 16]
+strides: [1,1,1,1,1]
+
+# Encoder MLP
+encoder_layers: 1
+last_convs: [400]
+encoder_dims: [64]
+
+# GNN
+graph_filters: [3]
+node_dims: [128]
+
+# Policy MLP
+action_layers: 1
+
+# Training
+epochs: 200
+tests_episodes: 100
+net_type: 'gnn'
+msg_type: 'gcn'
+# Simulation
+board_size: [20,20]
+map_shape: [20,20]
+num_agents: 10
+obstacles: 40
+max_steps: 60
+max_time: 32
+min_time: 10
+sensing_range: 6
+vali_path: "dataset/train/"
+model_path: "models/"
+
+# Data Loading
+min_timec: 1
+num_workers: 3
+batch_size: 5
+train:
+    root_dir: 'dataset'
+    mode: 'train'
+    min_time: 4
+    max_time_dl: 30
+    nb_agents: 10
+
+
+dataset:
+    num_agents: 10
+    map_shape: [20, 20]
+    nb_agents: 10
+    nb_obstacles: 0
+    sensor_range: 6
+    board_size: [20, 20]
+    max_time: 32
+    min_time: 4 
+    path: "dataset/"
+
+
+gptrunner:
+    role_prompt_path: "llm_mapf/role_prompt.txt"
+    # file_path: "dataset/train/"
+
+gptrunner_vali:
+    role_prompt_path: "llm_mapf/role_prompt.txt"
+    # file_path: "results/trained_models/vali/"

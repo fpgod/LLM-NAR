@@ -1,0 +1,37 @@
+model_name: 'transNAR'
+
+llm_type: "gpt"
+
+
+# CNN
+channels: [16, 16, 16]
+strides: [1,1,1,1,1]
+
+# Encoder MLP
+encoder_layers: 1
+last_convs: [400]
+encoder_dims: [64]
+
+# GNN
+graph_filters: [3]
+node_dims: [128]
+
+# Policy MLP
+action_layers: 1
+
+# Training
+epochs: 200
+tests_episodes: 100
+net_type: 'gnn'
+msg_type: 'gcn'
+# Simulation
+board_size: [16,16]
+map_shape: [16,16]
+num_agents: 8
+obstacles: 25
+max_steps: 48
+max_time: 32
+sensing_range: 6
+
+
+min_time: 1
